@@ -11,3 +11,4 @@ This is an assignment of C programming of ZJU.
 This is a Drangon&Puzzle-like game whose goal is to eliminate all crystals in a limited period. 
 
 ## Resources
+* Images:<a herf = "http://www.sccnn.com/">素材中国</a>
