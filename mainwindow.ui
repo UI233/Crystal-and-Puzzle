@@ -28,6 +28,8 @@
       <widget class="QPushButton" name="pushButton">
        <property name="styleSheet">
         <string notr="true">font: 9pt &quot;方正姚体&quot;;
+color: rgb(255, 57, 246);
+background-image: url(:/Resources/Resources/button1.bmp);
 </string>
        </property>
        <property name="text">
@@ -52,6 +54,8 @@
       <widget class="QPushButton" name="pushButton_2">
        <property name="styleSheet">
         <string notr="true">font: 9pt &quot;方正姚体&quot;;
+color: rgb(224, 111, 255);
+background-image: url(:/Resources/Resources/button2.bmp);
 </string>
        </property>
        <property name="text">
@@ -76,7 +80,8 @@
       <widget class="QPushButton" name="pushButton_3">
        <property name="styleSheet">
         <string notr="true">font: 9pt &quot;方正姚体&quot;;
-</string>
+color : rgb(212, 37, 255);
+background-image: url(:/Resources/Resources/button1.bmp);</string>
        </property>
        <property name="text">
         <string>帮助</string>
