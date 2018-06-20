@@ -2,5 +2,7 @@
     <qresource prefix="/Resources">
         <file>Resources/button1.bmp</file>
         <file>Resources/button2.bmp</file>
+        <file>Resources/back_button.bmp</file>
+        <file>Resources/menu_background.bmp</file>
     </qresource>
 </RCC>
