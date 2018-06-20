@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
      <x>410</x>
@@ -32,10 +32,10 @@
   <widget class="QTextBrowser" name="textBrowser">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>491</width>
-     <height>571</height>
+     <x>40</x>
+     <y>170</y>
+     <width>411</width>
+     <height>361</height>
     </rect>
    </property>
   </widget>

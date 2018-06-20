@@ -39,4 +39,5 @@ FORMS += \
     board.ui
 
 RESOURCES += \
-    img.qrc
+    img.qrc \
+    audio.qrc
