@@ -12,3 +12,6 @@ This is a Drangon&Puzzle-like game whose goal is to eliminate all crystals in a 
 
 ## Resources
 * Images : [素材中国](http://www.sccnn.com/ "www.sccnn.com")
+
+## License
+MIT
