@@ -7,11 +7,13 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     score(NULL),
-    help(NULL)
+    help(NULL),
+    game(NULL)
 {
     ui->setupUi(this);
     connect(ui -> helpme,&QPushButton::clicked,this,ShowHelp);
     connect(ui -> highscore,&QPushButton::clicked,this,ShowBoard);
+    connect(ui -> StGame,&QPushButton::clicked,this,StartGame);
 }
 
 MainWindow::~MainWindow()
@@ -51,4 +53,17 @@ void MainWindow::ShowBoard()
 void MainWindow::EditBoard(int difficulty, int time)
 {
     Score::Edit(difficulty, time);
+}
+
+bool MainWindow::StartGame()
+{
+    if(game == NULL)
+    {
+        game = new gamePad(this);
+        game -> show();
+        //ui -> hide();
+    }
+    else
+        game -> show();
+    return true;
 }

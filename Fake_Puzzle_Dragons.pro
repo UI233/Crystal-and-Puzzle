@@ -28,15 +28,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    board.cpp
+    board.cpp \
+    gamepad.cpp
 
 HEADERS += \
         mainwindow.h \
-    board.h
+    board.h \
+    gamepad.h
 
 FORMS += \
         mainwindow.ui \
-    board.ui
+    board.ui \
+    gamepad.ui
 
 RESOURCES += \
     img.qrc \

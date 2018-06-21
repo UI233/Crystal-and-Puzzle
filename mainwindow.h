@@ -7,6 +7,7 @@
 #include <fstream>
 #include <string>
 #include "board.h"
+#include "gamepad.h"
 
 namespace Ui {
 class MainWindow;
@@ -32,6 +33,7 @@ private:
     Ui::MainWindow *ui;
     std::string filename;
     Board *score,*help;
+    gamePad *game;
 };
 
 #endif // MAINWINDOW_H
