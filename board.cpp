@@ -4,11 +4,11 @@
 
 Board::Board(QWidget *parent) :
     QWidget(parent),
+    context(""),
     ui(new Ui::Board)
 {
     ui->setupUi(this);
     connect(ui -> back,&QPushButton::clicked,this,this -> hide);
-    //ui ->textBrowser -> setPlainText("Hello");
 }
 
 Board::~Board()
@@ -28,6 +28,7 @@ Help::Help(QWidget *parent = NULL):
     int length = readme.tellg();
     readme.seekg(0,readme.beg);
     readme.read(temp,length);
+    temp[length] = 0;
     context = std::string(temp);
     delete temp;
     this -> ui -> textBrowser -> setPlainText(QString::fromStdString(context));
@@ -53,7 +54,9 @@ Score::Score(QWidget *parent = NULL):
         scoreboard >> difficulty >> time;
         context += "*  ";
         context += '0' + i;
+        context += "   " ;
         context += TransformDifficulty(difficulty) + "   :   " + TransformTime(time);
+        context += '\n';
         context += '\n';
     }
     scoreboard.close();
@@ -98,7 +101,7 @@ void Score::Edit(int difficulty, int time)
     //Update the Board.
     if(pos == -1)
     {
-        if(n >= 10)
+        if(n >= 5)
             return ;
         diff[n] = difficulty;
         use[n] = time;

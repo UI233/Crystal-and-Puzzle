@@ -40,7 +40,7 @@ public:
 private:
     inline std::string TransformTime(int sec)
     {
-        std::string res = std::string("0  :   ");
+        std::string res("0  :    ");
         int minutes = sec / 60, seconds = sec % 60;
         res[1] = '0' + minutes;
         res[6] = '0' + seconds / 10;
@@ -53,13 +53,13 @@ private:
         switch (difficulty)
         {
             case 3:
-                return std::string("Hard");
+                return std::string("Hard   ");
                 break;
             case 2:
                 return std::string("Medium");
                 break;
             case 1:
-                return std::string("Easy");
+                return std::string("Easy   ");
                 break;
         }
         return NULL;

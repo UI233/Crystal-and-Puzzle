@@ -4,5 +4,6 @@
         <file>Resources/button2.bmp</file>
         <file>Resources/back_button.bmp</file>
         <file>Resources/menu_background.bmp</file>
+        <file>Resources/TextBroswer_bg.bmp</file>
     </qresource>
 </RCC>

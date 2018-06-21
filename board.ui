@@ -38,6 +38,11 @@
      <height>361</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Resources/Resources/TextBroswer_bg.bmp);
+color: rgb(255, 255, 255);
+font: 18pt &quot;Mistral&quot;;</string>
+   </property>
   </widget>
  </widget>
  <resources/>
