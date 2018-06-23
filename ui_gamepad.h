@@ -24,7 +24,7 @@ QT_BEGIN_NAMESPACE
 
 class Ui_gamePad
 {
-public:
+  public:
     QPushButton *back;
     QWidget *layoutWidget;
     QVBoxLayout *Score;
@@ -35,7 +35,6 @@ public:
     QVBoxLayout *Timer;
     QLabel *TimerLabel;
     QLCDNumber *TimerLCD;
-    QLabel *gameLabel;
 
     void setupUi(QWidget *gamePad)
     {
@@ -81,15 +80,6 @@ public:
 
         Timer->addWidget(TimerLCD);
 
-        gameLabel = new QLabel(gamePad);
-        gameLabel->setObjectName(QStringLiteral("gameLabel"));
-        gameLabel->setGeometry(QRect(143, 100, 311, 441));
-        gameLabel->setAutoFillBackground(true);
-        gameLabel->setFrameShape(QFrame::Box);
-        gameLabel->setFrameShadow(QFrame::Raised);
-        gameLabel->setLineWidth(3);
-        gameLabel->setMidLineWidth(1);
-
         retranslateUi(gamePad);
 
         QMetaObject::connectSlotsByName(gamePad);
@@ -102,13 +92,14 @@ public:
         ScoreLable->setText(QApplication::translate("gamePad", "Score", Q_NULLPTR));
         pushButton->setText(QApplication::translate("gamePad", "Restart", Q_NULLPTR));
         TimerLabel->setText(QApplication::translate("gamePad", "Time", Q_NULLPTR));
-        gameLabel->setText(QString());
     } // retranslateUi
-
 };
 
-namespace Ui {
-    class gamePad: public Ui_gamePad {};
+namespace Ui
+{
+class gamePad : public Ui_gamePad
+{
+};
 } // namespace Ui
 
 QT_END_NAMESPACE

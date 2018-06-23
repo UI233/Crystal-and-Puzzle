@@ -10,8 +10,14 @@
     <height>640</height>
    </rect>
   </property>
+  <property name="cursor">
+   <cursorShape>SizeAllCursor</cursorShape>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
   </property>
   <widget class="QPushButton" name="back">
    <property name="geometry">
@@ -86,35 +92,28 @@
     </item>
    </layout>
   </widget>
-  <widget class="QLabel" name="gameLabel">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>143</x>
-     <y>100</y>
-     <width>311</width>
-     <height>441</height>
+     <x>150</x>
+     <y>110</y>
+     <width>300</width>
+     <height>420</height>
     </rect>
    </property>
    <property name="autoFillBackground">
-    <bool>true</bool>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::Box</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <property name="lineWidth">
-    <number>3</number>
-   </property>
-   <property name="midLineWidth">
-    <number>1</number>
+    <bool>false</bool>
    </property>
    <property name="text">
     <string/>
    </property>
+   <property name="pixmap">
+    <pixmap resource="img.qrc">:/Resources/Resources/menu_background.bmp</pixmap>
+   </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="img.qrc"/>
+ </resources>
  <connections/>
 </ui>

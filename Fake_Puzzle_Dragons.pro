@@ -30,13 +30,15 @@ SOURCES += \
     mainwindow.cpp \
     board.cpp \
     gamepad.cpp \
-    difficultychoice.cpp
+    difficultychoice.cpp \
+    display.cpp
 
 HEADERS += \
         mainwindow.h \
     board.h \
     gamepad.h \
-    difficultychoice.h
+    difficultychoice.h \
+    display.h
 
 FORMS += \
         mainwindow.ui \

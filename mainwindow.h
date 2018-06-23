@@ -9,7 +9,7 @@
 #include "board.h"
 #include "gamepad.h"
 
-namespace Ui {
+ namespace Ui {
 class MainWindow;
 }
 

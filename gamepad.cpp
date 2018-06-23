@@ -1,6 +1,25 @@
 #include "gamepad.h"
 #include "ui_gamepad.h"
 #include "ui_difficultychoice.h"
+#include<QDebug>
+bool gamePad::LoadMaterials(){
+    char filename[50]="";
+    QPixmap p(crystalWidth,crystalWidth);
+    p.fill(Qt::transparent);
+    crystalPix.push_back(p);
+    for (int i=1;i<=6;i++) {
+        sprintf(filename,":/Resources/Resources/%d.png",i);
+        qDebug(filename);
+        QPixmap pic(filename);
+        if (pic.isNull()) {
+            qDebug("notokay");
+            return false;
+        }
+        crystalPix.push_back(pic.copy(0,0,100,100).scaled(crystalWidth,crystalWidth));
+    }
+    qDebug("okay");
+    return true;
+}
 
 gamePad::gamePad(QWidget *parent) :
     QWidget(parent),
@@ -9,6 +28,14 @@ gamePad::gamePad(QWidget *parent) :
     isChosenDifficulty(false),
     timer(nullptr)
 {
+    LoadMaterials();
+    pix=new QPixmap(300,420);
+    pix->fill(Qt::transparent);
+    display = new Display(pix->size(),this);
+    display->setGeometry(140,120,300,420);
+    display->setParent(this);
+    this->DrawCrystals();
+    this->ShowCrystals();
     CreatDifficultyDialog();
     ui->setupUi(this);
     connect(ui -> back,&QPushButton::clicked,this,this -> hide);
@@ -92,4 +119,15 @@ void gamePad::CreatDifficultyDialog()
     connect(dialog -> ui -> Medium,&QPushButton::clicked,this,this -> SetMedium);
     connect(dialog -> ui -> Hard,&QPushButton::clicked,this,this -> SetHard);
     dialog -> show();
+}
+
+void gamePad::DrawCrystals(){
+    QPainter painter(pix);
+    pix->fill(Qt::transparent);
+    for (int c=0;c<5;c++)
+        for (int r=0;r<7;r++) painter.drawPixmap(c*crystalWidth,r*crystalWidth,crystalPix[crystalMap[r][c]]);
+    qDebug("okay!!");
+}
+void gamePad::ShowCrystals(){
+    display->showPix(pix);
 }

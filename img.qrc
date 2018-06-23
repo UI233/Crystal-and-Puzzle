@@ -5,5 +5,12 @@
         <file>Resources/back_button.bmp</file>
         <file>Resources/menu_background.bmp</file>
         <file>Resources/TextBroswer_bg.bmp</file>
+        <file>Resources/1.png</file>
+        <file>Resources/2.png</file>
+        <file>Resources/3.png</file>
+        <file>Resources/4.png</file>
+        <file>Resources/5.png</file>
+        <file>Resources/6.png</file>
+        <file>Resources/bgm.mp3</file>
     </qresource>
 </RCC>
