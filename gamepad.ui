@@ -64,17 +64,7 @@
     <string>Restart</string>
    </property>
   </widget>
-  <widget class="QWidget" name="widget" native="true">
-   <property name="geometry">
-    <rect>
-     <x>139</x>
-     <y>109</y>
-     <width>341</width>
-     <height>431</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -95,6 +85,34 @@
      <widget class="QLCDNumber" name="TimerLCD"/>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="gameLabel">
+   <property name="geometry">
+    <rect>
+     <x>143</x>
+     <y>100</y>
+     <width>311</width>
+     <height>441</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <property name="lineWidth">
+    <number>3</number>
+   </property>
+   <property name="midLineWidth">
+    <number>1</number>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
   </widget>
  </widget>
  <resources/>
