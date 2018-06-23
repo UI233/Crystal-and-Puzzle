@@ -120,7 +120,7 @@ void Score::Edit(int difficulty, int time)
     in.open("Board.in" , std::ios_base::out);
     if(in.is_open() == false)
     {
-        //std::stderr << "Can't open File";
+       // std::cerr << "Can't open File";
         return ;
     }
     in << n;

@@ -64,6 +64,9 @@ bool MainWindow::StartGame()
         //ui -> hide();
     }
     else
+    {
+        game -> CreatDifficultyDialog();
         game -> show();
+    }
     return true;
 }
