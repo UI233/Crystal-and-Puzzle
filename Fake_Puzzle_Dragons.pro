@@ -47,3 +47,5 @@ FORMS += \
 RESOURCES += \
     img.qrc \
     audio.qrc
+
+RC_ICONS = crystal.ico
