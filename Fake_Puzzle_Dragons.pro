@@ -29,17 +29,20 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     board.cpp \
-    gamepad.cpp
+    gamepad.cpp \
+    difficultychoice.cpp
 
 HEADERS += \
         mainwindow.h \
     board.h \
-    gamepad.h
+    gamepad.h \
+    difficultychoice.h
 
 FORMS += \
         mainwindow.ui \
     board.ui \
-    gamepad.ui
+    gamepad.ui \
+    difficultychoice.ui
 
 RESOURCES += \
     img.qrc \

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>difficultyChoice</class>
+ <widget class="QDialog" name="difficultyChoice">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>310</width>
+    <height>187</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>271</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="Easy">
+      <property name="styleSheet">
+       <string notr="true">color : rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Easy</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Medium">
+      <property name="styleSheet">
+       <string notr="true">color : rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Medium</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Hard">
+      <property name="styleSheet">
+       <string notr="true">color : rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Hard</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
