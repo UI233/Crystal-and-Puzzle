@@ -34,6 +34,8 @@ gamePad::gamePad(QWidget *parent) :
     display = new Display(pix->size(),this);
     display->setGeometry(140,120,300,420);
     display->setParent(this);
+    this->InitMap();
+    this->SetRandomMap();
     this->DrawCrystals();
     this->ShowCrystals();
     CreatDifficultyDialog();
@@ -130,4 +132,27 @@ void gamePad::DrawCrystals(){
 }
 void gamePad::ShowCrystals(){
     display->showPix(pix);
+}
+
+void gamePad::SetRandomMap(){
+    auto chk=[this](int x,int y,int val){
+        if (x>0&&crystalMap[x-1][y]==val) return false;
+        if (x<Height-1&&crystalMap[x+1][y]==val) return false;
+        if (y>0&&crystalMap[x][y-1]==val) return false;
+        if (y<Width-1&&crystalMap[x][y+1]==val) return false;
+        return true;
+    };
+    for (int c=0;c<Width;c++)
+        for (int r=0;r<Height;r++) if (crystalMap[r][c]==0){
+            int val=(rand()%6)+1;
+            while(!chk(r,c,val)) val=(rand()%6)+1;
+            crystalMap[r][c]=val;
+            qDebug("Position:%d %d Color:%d",r,c,val);
+        }
+
+}
+
+void gamePad::InitMap(){
+    for (int c=0;c<Width;c++)
+        for (int r=0;r<Height;r++) crystalMap[r][c]=0;
 }

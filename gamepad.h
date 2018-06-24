@@ -28,6 +28,8 @@ public:
     void SetTimer(int);
     void SetScore(int);
     void CreatDifficultyDialog();
+    void InitMap();
+    void SetRandomMap();
     void DrawCrystals();
     void ShowCrystals();
     bool LoadMaterials();
@@ -38,8 +40,11 @@ private:
     std::vector<QPixmap> crystalPix;
     int difficulty;
     int nowTime;
-    int crystalMap[7][5]={{1,2,3,4,5},{2,3,4,5,6},{3,4,5,6,1},{4,5,6,1,2},{5,6,1,2,3},{6,1,2,3,4},{1,2,3,4,5}};
+    int crystalMap[7][5];
+    const int Width=5;
+    const int Height=7;
     const int crystalWidth=60;
+    const int crystalType=6;
     bool isChosenDifficulty;
     Ui::gamePad *ui;
     QPixmap *pix;
