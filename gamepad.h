@@ -15,7 +15,10 @@ class gamePad;
 class gamePad : public QWidget
 {
     Q_OBJECT
-
+public slots:
+    void display_clicked(int r,int c);
+    void display_moved(int r,int c);
+    void display_released();
 public:
     explicit gamePad(QWidget *parent = 0);
     ~gamePad();
@@ -32,6 +35,8 @@ public:
     void SetRandomMap();
     void DrawCrystals();
     void ShowCrystals();
+    void SwapCrystals(int,int);
+    void CheckCrystals();
     bool LoadMaterials();
 
 private:
@@ -41,6 +46,8 @@ private:
     int difficulty;
     int nowTime;
     int crystalMap[7][5];
+    int nowr;
+    int nowc;
     const int Width=5;
     const int Height=7;
     const int crystalWidth=60;

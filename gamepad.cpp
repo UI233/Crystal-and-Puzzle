@@ -28,6 +28,7 @@ gamePad::gamePad(QWidget *parent) :
     isChosenDifficulty(false),
     timer(nullptr)
 {
+    srand((unsigned)time(NULL));
     LoadMaterials();
     pix=new QPixmap(300,420);
     pix->fill(Qt::transparent);
@@ -43,6 +44,9 @@ gamePad::gamePad(QWidget *parent) :
     connect(ui -> back,&QPushButton::clicked,this,this -> hide);
     //SetTimer(10); //TestTimer
     //connect(ui -> reset,&QPushButton::clicked,this,this -> restart);
+    connect(display,SIGNAL(clicked(int,int)),this,SLOT(display_clicked(int,int)));
+    connect(display,SIGNAL(released()),this,SLOT(display_released()));
+    connect(display,SIGNAL(moved(int,int)),this,SLOT(display_moved(int,int)));
 }
 
 gamePad::~gamePad()
@@ -155,4 +159,73 @@ void gamePad::SetRandomMap(){
 void gamePad::InitMap(){
     for (int c=0;c<Width;c++)
         for (int r=0;r<Height;r++) crystalMap[r][c]=0;
+}
+
+void gamePad::display_clicked(int r, int c){
+
+    nowr=r/crystalWidth;
+    nowc=c/crystalWidth;
+    if (crystalMap[nowr][nowc]==0) nowr=nowc=0;
+}
+
+void gamePad::display_moved(int r, int c){
+    int r1=r/crystalWidth;
+    int c1=c/crystalWidth;
+    //qDebug()<<r1<<" "<<c1<<" now:"<<nowr<<" "<<nowc;
+    SwapCrystals(r1,c1);
+}
+
+void gamePad::display_released(){
+    nowr=nowc=-1;
+    CheckCrystals();
+}
+
+void gamePad::SwapCrystals(int r1, int c1){
+    std::function<bool(int,int)> chk=[this](int x,int y) {
+        return x>=0&&x<Height&&y>=0&&y<Width;
+    };
+    if (nowr!=-1&&nowc!=-1){
+        if (abs(r1-nowr)+abs(c1-nowc)==1&&chk(r1,c1)){
+            std::swap(crystalMap[r1][c1],crystalMap[nowr][nowc]);
+            this->DrawCrystals();
+            this->ShowCrystals();
+            nowc=c1;
+            nowr=r1;
+        }
+    }
+}
+
+void gamePad::CheckCrystals(){
+    int vis[7][5];
+    memset(vis,0,sizeof(vis));
+    int num[50];
+    memset(num,0,sizeof(num));
+    int cnt=0;
+    int kx[4]={0,0,-1,1};
+    int ky[4]={-1,1,0,0};
+    std::function<bool(int,int)> chk=[this](int x,int y) {
+        return x>=0&&x<Height&&y>=0&&y<Width;
+    };
+    std::function<void(int r,int c)> dfs=[&](int r,int c){
+        for (int i=0;i<4;i++)
+            if (chk(r+kx[i],c+ky[i])&&crystalMap[r+kx[i]][c+ky[i]]==crystalMap[r][c]&&!vis[r+kx[i]][c+ky[i]]){
+                vis[r+kx[i]][c+ky[i]]=cnt;
+                num[cnt]++;
+                dfs(r+kx[i],c+ky[i]);
+            }
+    };
+    for (int r=0;r<Height;r++)
+        for (int c=0;c<Width;c++)if (!vis[r][c]&&crystalMap[r][c]) {
+            vis[r][c]=++cnt;
+            num[cnt]=1;
+            dfs(r,c);
+        }
+    for (int i=1;i<=cnt;i++) if (num[i]>2)
+        for (int r=0;r<Height;r++)
+            for (int c=0;c<Width;c++) if (vis[r][c]==i) crystalMap[r][c]=0;
+    this->SetRandomMap();
+    this->DrawCrystals();
+    this->ShowCrystals();
+    for (int r=0;r<Height;r++)
+        for (int c=0;c<Width;c++) qDebug("(%d,%d):%d",r,c,crystalMap[r][c]);
 }

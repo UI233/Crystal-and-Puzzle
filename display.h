@@ -15,8 +15,12 @@ public:
     void showPix(QPixmap*);
 signals:
     void clicked(int,int);
+    void released();
+    void moved(int,int);
 protected:
     void mouseReleaseEvent(QMouseEvent *e);
+    void mousePressEvent(QMouseEvent *e);
+    void mouseMoveEvent(QMouseEvent *e);
 private:
 };
 
