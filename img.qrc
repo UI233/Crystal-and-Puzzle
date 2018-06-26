@@ -12,5 +12,6 @@
         <file>Resources/5.png</file>
         <file>Resources/6.png</file>
         <file>Resources/bgm.mp3</file>
+        <file>Resources/restart_button.bmp</file>
     </qresource>
 </RCC>
