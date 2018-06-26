@@ -38,16 +38,6 @@ public:
     ~Score();
     static void Edit(int difficulty, int time);
 private:
-    inline std::string TransformTime(int sec)
-    {
-        std::string res("0  :    ");
-        int minutes = sec / 60, seconds = sec % 60;
-        res[1] = '0' + minutes;
-        res[6] = '0' + seconds / 10;
-        res[7] = '0' + seconds % 10;
-        return res;
-    }
-
     inline std::string TransformDifficulty(int difficulty)
     {
         switch (difficulty)

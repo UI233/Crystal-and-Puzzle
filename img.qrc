@@ -12,6 +12,7 @@
         <file>Resources/5.png</file>
         <file>Resources/6.png</file>
         <file>Resources/bgm.mp3</file>
+<<<<<<< HEAD
         <file>Resources/1-1.png</file>
         <file>Resources/2-1.png</file>
         <file>Resources/3-1.png</file>
@@ -19,5 +20,8 @@
         <file>Resources/5-1.png</file>
         <file>Resources/6-1.png</file>
         <file>Resources/display_background.png</file>
+=======
+        <file>Resources/restart_button.bmp</file>
+>>>>>>> 6a4813cce97bac9cbfea5bceade09ffc46ba0b46
     </qresource>
 </RCC>

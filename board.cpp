@@ -50,12 +50,12 @@ Score::Score(QWidget *parent = NULL):
     scoreboard >> n;
     for(int i=0;i<n;i++)
     {
-        int time,difficulty;
-        scoreboard >> difficulty >> time;
+        int score,difficulty;
+        scoreboard >> difficulty >> score;
         context += "*  ";
         context += '0' + i;
         context += "   " ;
-        context += TransformDifficulty(difficulty) + "   :   " + TransformTime(time);
+        context += TransformDifficulty(difficulty) + "   :   " + std::to_string(score);
         context += '\n';
         context += '\n';
     }
@@ -69,9 +69,8 @@ Score::~Score()
     delete ui;
 }
 
-void Score::Edit(int difficulty, int time)
+void Score::Edit(int difficulty, int score)
 {
-    static const int timelimit = 300;
     static int diff[11],use[11],n,pos,rank,tmprank;
     pos = -1;
     std::fstream in("Board.in", std::ios_base::in);
@@ -80,18 +79,18 @@ void Score::Edit(int difficulty, int time)
     {
         in.open("Board.in",std::ios_base::out);
         in << 1 << std::endl;
-        in << difficulty << " " << time << std::endl;
+        in << difficulty << " " << score << std::endl;
         in.close();
         return ;
     }
     //Read the file to decide whether to update the board or not.
     in >> n;
-    rank = difficulty * (timelimit - time);
+    rank = difficulty * score;
     for(int i=0;i<n && pos == -1;i++)
     {
         in >> diff[i];
         in >> use[i];
-        tmprank = diff[i] * (timelimit - use[i]);
+        tmprank = diff[i] * use[i];
         if(tmprank < rank)
         {
             pos = i;
@@ -104,7 +103,7 @@ void Score::Edit(int difficulty, int time)
         if(n >= 5)
             return ;
         diff[n] = difficulty;
-        use[n] = time;
+        use[n] = score;
         ++n;
     }
     else
@@ -115,7 +114,7 @@ void Score::Edit(int difficulty, int time)
             use[i] = use[i - 1];
         }
         diff[pos] = difficulty;
-        use[pos] = time;
+        use[pos] = score;
     }
     in.open("Board.in" , std::ios_base::out);
     if(in.is_open() == false)
