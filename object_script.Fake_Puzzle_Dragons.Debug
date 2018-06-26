@@ -1,0 +1,15 @@
+INPUT(
+./debug/main.o
+./debug/mainwindow.o
+./debug/board.o
+./debug/gamepad.o
+./debug/difficultychoice.o
+./debug/display.o
+./debug/qrc_img.o
+./debug/qrc_audio.o
+./debug/moc_mainwindow.o
+./debug/moc_board.o
+./debug/moc_gamepad.o
+./debug/moc_difficultychoice.o
+./debug/moc_display.o
+);
