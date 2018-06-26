@@ -91,7 +91,6 @@ void gamePad::SetTimer(int time)
     }
 }
 
-void gamePad::SetScore(int score)
 {
     ui -> TimerLCD -> display(score);
 }
