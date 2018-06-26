@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'gamepad.ui'
 **
-** Created by: Qt User Interface Compiler version 5.8.0
+** Created by: Qt User Interface Compiler version 5.9.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -24,7 +24,7 @@ QT_BEGIN_NAMESPACE
 
 class Ui_gamePad
 {
-  public:
+public:
     QPushButton *back;
     QWidget *layoutWidget;
     QVBoxLayout *Score;
@@ -41,6 +41,8 @@ class Ui_gamePad
         if (gamePad->objectName().isEmpty())
             gamePad->setObjectName(QStringLiteral("gamePad"));
         gamePad->resize(480, 640);
+        gamePad->setCursor(QCursor(Qt::ArrowCursor));
+        gamePad->setAutoFillBackground(true);
         back = new QPushButton(gamePad);
         back->setObjectName(QStringLiteral("back"));
         back->setGeometry(QRect(410, 0, 71, 71));
@@ -53,6 +55,7 @@ class Ui_gamePad
         Score->setContentsMargins(0, 0, 0, 0);
         ScoreLable = new QLabel(layoutWidget);
         ScoreLable->setObjectName(QStringLiteral("ScoreLable"));
+        ScoreLable->setCursor(QCursor(Qt::CrossCursor));
 
         Score->addWidget(ScoreLable);
 
@@ -80,6 +83,7 @@ class Ui_gamePad
 
         Timer->addWidget(TimerLCD);
 
+
         retranslateUi(gamePad);
 
         QMetaObject::connectSlotsByName(gamePad);
@@ -93,13 +97,11 @@ class Ui_gamePad
         pushButton->setText(QApplication::translate("gamePad", "Restart", Q_NULLPTR));
         TimerLabel->setText(QApplication::translate("gamePad", "Time", Q_NULLPTR));
     } // retranslateUi
+
 };
 
-namespace Ui
-{
-class gamePad : public Ui_gamePad
-{
-};
+namespace Ui {
+    class gamePad: public Ui_gamePad {};
 } // namespace Ui
 
 QT_END_NAMESPACE

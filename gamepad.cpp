@@ -9,15 +9,27 @@ bool gamePad::LoadMaterials(){
     crystalPix.push_back(p);
     for (int i=1;i<=6;i++) {
         sprintf(filename,":/Resources/Resources/%d.png",i);
-        qDebug(filename);
+        //qDebug(filename);
         QPixmap pic(filename);
         if (pic.isNull()) {
-            qDebug("notokay");
+            //qDebug("notokay");
             return false;
         }
         crystalPix.push_back(pic.copy(0,0,100,100).scaled(crystalWidth,crystalWidth));
     }
-    qDebug("okay");
+    displayBg=new QPixmap(":/Resources/Resources/display_background");
+    crystalPixSelected.push_back(p);
+    for (int i=1;i<=6;i++) {
+        sprintf(filename,":/Resources/Resources/%d-1.png",i);
+        //qDebug(filename);
+        QPixmap pic(filename);
+        if (pic.isNull()) {
+            //qDebug("notokay");
+            return false;
+        }
+        crystalPixSelected.push_back(pic.copy(0,0,100,100).scaled(crystalWidth,crystalWidth));
+    }
+    //qDebug("okay");
     return true;
 }
 
@@ -129,9 +141,11 @@ void gamePad::CreatDifficultyDialog()
 
 void gamePad::DrawCrystals(){
     QPainter painter(pix);
-    pix->fill(Qt::transparent);
+    painter.drawPixmap(0,0,*displayBg);
     for (int c=0;c<5;c++)
-        for (int r=0;r<7;r++) painter.drawPixmap(c*crystalWidth,r*crystalWidth,crystalPix[crystalMap[r][c]]);
+        for (int r=0;r<7;r++) if (nowr!=r||nowc!=c)
+            painter.drawPixmap(c*crystalWidth,r*crystalWidth,crystalPix[crystalMap[r][c]]);
+    if (nowr!=-1) painter.drawPixmap(nowc*crystalWidth,nowr*crystalWidth,crystalPixSelected[crystalMap[nowr][nowc]]);
     qDebug("okay!!");
 }
 void gamePad::ShowCrystals(){
@@ -162,13 +176,17 @@ void gamePad::InitMap(){
 }
 
 void gamePad::display_clicked(int r, int c){
-
+    if (checking) return ;
+    cntMove=0;
     nowr=r/crystalWidth;
     nowc=c/crystalWidth;
-    if (crystalMap[nowr][nowc]==0) nowr=nowc=0;
+    if (crystalMap[nowr][nowc]==0) nowr=nowc=-1;
+    this->DrawCrystals();
+    this->ShowCrystals();
 }
 
 void gamePad::display_moved(int r, int c){
+    if (checking) return ;
     int r1=r/crystalWidth;
     int c1=c/crystalWidth;
     //qDebug()<<r1<<" "<<c1<<" now:"<<nowr<<" "<<nowc;
@@ -176,26 +194,36 @@ void gamePad::display_moved(int r, int c){
 }
 
 void gamePad::display_released(){
+    if (cntMove) cntStep++;
+    cntMove=0;
+    if (checking) return ;
     nowr=nowc=-1;
-    CheckCrystals();
+    while(CheckCrystals());
 }
 
 void gamePad::SwapCrystals(int r1, int c1){
-    std::function<bool(int,int)> chk=[this](int x,int y) {
+    std::function<bool(int,int)> chk=[this](int x,int y) {//check if in the border
         return x>=0&&x<Height&&y>=0&&y<Width;
     };
-    if (nowr!=-1&&nowc!=-1){
+    if (nowr!=-1&&nowc!=-1){//next to the last one
         if (abs(r1-nowr)+abs(c1-nowc)==1&&chk(r1,c1)){
             std::swap(crystalMap[r1][c1],crystalMap[nowr][nowc]);
-            this->DrawCrystals();
-            this->ShowCrystals();
             nowc=c1;
             nowr=r1;
+            this->DrawCrystals();
+            this->ShowCrystals();
+            cntMove++;
         }
+        if (cntMove==maxCntMove) display_released();
     }
 }
 
-void gamePad::CheckCrystals(){
+bool gamePad::CheckCrystals(){
+    checking = 1;
+    bool flag=0;
+    qDebug("%lf\n",comboBonus);
+    this->DrawCrystals();
+    this->ShowCrystals();
     int vis[7][5];
     memset(vis,0,sizeof(vis));
     int num[50];
@@ -214,6 +242,10 @@ void gamePad::CheckCrystals(){
                 dfs(r+kx[i],c+ky[i]);
             }
     };
+    auto pauseforanime=[this](){
+            QEventLoop el;
+            QTimer::singleShot(animati_pause_ms, &el, SLOT(quit()));
+            el.exec();};
     for (int r=0;r<Height;r++)
         for (int c=0;c<Width;c++)if (!vis[r][c]&&crystalMap[r][c]) {
             vis[r][c]=++cnt;
@@ -221,11 +253,40 @@ void gamePad::CheckCrystals(){
             dfs(r,c);
         }
     for (int i=1;i<=cnt;i++) if (num[i]>2)
+    {
+        score+=10*pow(2.5,num[i])*comboBonus;
+        flag=1;
+        comboBonus+=0.1;
         for (int r=0;r<Height;r++)
             for (int c=0;c<Width;c++) if (vis[r][c]==i) crystalMap[r][c]=0;
+        this->DrawCrystals();
+        this->ShowCrystals();
+        pauseforanime();
+    }
+    if (!flag) {
+        qDebug("over!");
+        comboBonus=1.0;
+        checking=0;
+        return flag;
+    }
+    LetItFall();
+    this->DrawCrystals();
+    this->ShowCrystals();
+    pauseforanime();
     this->SetRandomMap();
     this->DrawCrystals();
     this->ShowCrystals();
-    for (int r=0;r<Height;r++)
-        for (int c=0;c<Width;c++) qDebug("(%d,%d):%d",r,c,crystalMap[r][c]);
+    qDebug("Now the score is %.0lf",score);
+    checking = 0;
+    return 1;
+}
+
+void gamePad::LetItFall(){
+    for (int r=Height-1;r>=0;r--)
+        for (int c=0;c<Width;c++)
+            for (int i=1;i<=7;i++)
+                if (crystalMap[r][c]==0) {
+            for (int r1=r-1;r1>=0;r1--) crystalMap[r1+1][c]=crystalMap[r1][c];
+            crystalMap[0][c]=0;
+        }
 }

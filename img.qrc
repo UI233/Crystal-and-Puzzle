@@ -12,5 +12,12 @@
         <file>Resources/5.png</file>
         <file>Resources/6.png</file>
         <file>Resources/bgm.mp3</file>
+        <file>Resources/1-1.png</file>
+        <file>Resources/2-1.png</file>
+        <file>Resources/3-1.png</file>
+        <file>Resources/4-1.png</file>
+        <file>Resources/5-1.png</file>
+        <file>Resources/6-1.png</file>
+        <file>Resources/display_background.png</file>
     </qresource>
 </RCC>
