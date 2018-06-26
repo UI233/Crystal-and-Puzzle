@@ -30,7 +30,7 @@ public:
     QVBoxLayout *Score;
     QLabel *ScoreLable;
     QLCDNumber *ScoreLCD;
-    QPushButton *pushButton;
+    QPushButton *restart;
     QWidget *layoutWidget1;
     QVBoxLayout *Timer;
     QLabel *TimerLabel;
@@ -43,6 +43,7 @@ public:
         gamePad->resize(480, 640);
         gamePad->setCursor(QCursor(Qt::ArrowCursor));
         gamePad->setAutoFillBackground(true);
+        gamePad->setStyleSheet(QStringLiteral(""));
         back = new QPushButton(gamePad);
         back->setObjectName(QStringLiteral("back"));
         back->setGeometry(QRect(410, 0, 71, 71));
@@ -55,18 +56,22 @@ public:
         Score->setContentsMargins(0, 0, 0, 0);
         ScoreLable = new QLabel(layoutWidget);
         ScoreLable->setObjectName(QStringLiteral("ScoreLable"));
-        ScoreLable->setCursor(QCursor(Qt::CrossCursor));
+        ScoreLable->setStyleSheet(QLatin1String("font: 12pt \"Bradley Hand ITC\";\n"
+"color:rgb(255, 255, 255);\n"
+""));
 
         Score->addWidget(ScoreLable);
 
         ScoreLCD = new QLCDNumber(layoutWidget);
         ScoreLCD->setObjectName(QStringLiteral("ScoreLCD"));
+        ScoreLCD->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         Score->addWidget(ScoreLCD);
 
-        pushButton = new QPushButton(gamePad);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(400, 570, 81, 71));
+        restart = new QPushButton(gamePad);
+        restart->setObjectName(QStringLiteral("restart"));
+        restart->setGeometry(QRect(410, 570, 71, 71));
+        restart->setStyleSheet(QStringLiteral("border-image: url(:/Resources/Resources/restart_button.bmp);"));
         layoutWidget1 = new QWidget(gamePad);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
         layoutWidget1->setGeometry(QRect(0, 180, 111, 81));
@@ -75,11 +80,14 @@ public:
         Timer->setContentsMargins(0, 0, 0, 0);
         TimerLabel = new QLabel(layoutWidget1);
         TimerLabel->setObjectName(QStringLiteral("TimerLabel"));
+        TimerLabel->setStyleSheet(QLatin1String("color:rgb(255, 255, 255);\n"
+"font: 12pt \"Bradley Hand ITC\";"));
 
         Timer->addWidget(TimerLabel);
 
         TimerLCD = new QLCDNumber(layoutWidget1);
         TimerLCD->setObjectName(QStringLiteral("TimerLCD"));
+        TimerLCD->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         Timer->addWidget(TimerLCD);
 
@@ -93,9 +101,9 @@ public:
     {
         gamePad->setWindowTitle(QApplication::translate("gamePad", "Form", Q_NULLPTR));
         back->setText(QString());
-        ScoreLable->setText(QApplication::translate("gamePad", "Score", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("gamePad", "Restart", Q_NULLPTR));
-        TimerLabel->setText(QApplication::translate("gamePad", "Time", Q_NULLPTR));
+        ScoreLable->setText(QApplication::translate("gamePad", "      Scores", Q_NULLPTR));
+        restart->setText(QString());
+        TimerLabel->setText(QApplication::translate("gamePad", "      Time", Q_NULLPTR));
     } // retranslateUi
 
 };

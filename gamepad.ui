@@ -19,6 +19,9 @@
   <property name="autoFillBackground">
    <bool>true</bool>
   </property>
+    <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
@@ -47,30 +50,39 @@
    <layout class="QVBoxLayout" name="Score">
     <item>
      <widget class="QLabel" name="ScoreLable">
-      <property name="cursor">
-       <cursorShape>CrossCursor</cursorShape>
+           <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Bradley Hand ITC&quot;;
+color:rgb(255, 255, 255);
+</string>
       </property>
       <property name="text">
-       <string>Score</string>
+       <string>      Scores</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLCDNumber" name="ScoreLCD"/>
+         <widget class="QLCDNumber" name="ScoreLCD">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="restart">
    <property name="geometry">
     <rect>
-     <x>400</x>
+     <x>410</x>
      <y>570</y>
-     <width>81</width>
+     <width>71</width>
      <height>71</height>
     </rect>
+       </property>
+       <property name="styleSheet">
+    <string notr="true">border-image: url(:/Resources/Resources/restart_button.bmp);</string>
    </property>
    <property name="text">
-    <string>Restart</string>
+   <string/>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">
@@ -85,13 +97,21 @@
    <layout class="QVBoxLayout" name="Timer">
     <item>
      <widget class="QLabel" name="TimerLabel">
+     <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255);
+font: 12pt &quot;Bradley Hand ITC&quot;;</string>
+      </property>
       <property name="text">
-       <string>Time</string>
+       <string>      Time</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLCDNumber" name="TimerLCD"/>
+     <widget class="QLCDNumber" name="TimerLCD">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
