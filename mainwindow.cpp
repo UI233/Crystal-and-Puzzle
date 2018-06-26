@@ -46,6 +46,8 @@ void MainWindow::ShowBoard()
     }
     else
     {
+        delete score;
+        score = new Score(this);
         score -> show();
     }
 }

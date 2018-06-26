@@ -1,4 +1,5 @@
 #include "gamepad.h"
+#include "board.h"
 #include "ui_gamepad.h"
 #include "ui_difficultychoice.h"
 #include <QDebug>
@@ -57,8 +58,8 @@ gamePad::gamePad(QWidget *parent) : QWidget(parent),
     this->SetRandomMap();
     this->DrawCrystals();
     this->ShowCrystals();
-    CreatDifficultyDialog();
     ui->setupUi(this);
+    CreatDifficultyDialog();
     connect(ui->back, &QPushButton::clicked, this, this->hide);
     //SetTimer(10); //TestTimer
     //connect(ui -> reset,&QPushButton::clicked,this,this -> restart);
@@ -85,7 +86,10 @@ void gamePad::SetTimer(int time)
                     if (nowTime)
                         nowTime--;
                     else
+                    {
+                        Score::Edit(difficulty,score);
                         timer->stop();
+                    }
                     ui->TimerLCD->display(nowTime);
                 });
         timer->start(1000);
@@ -146,6 +150,8 @@ void gamePad::CreatDifficultyDialog()
     connect(dialog->ui->Easy, &QPushButton::clicked, this, this->SetEasy);
     connect(dialog->ui->Medium, &QPushButton::clicked, this, this->SetMedium);
     connect(dialog->ui->Hard, &QPushButton::clicked, this, this->SetHard);
+    score = 0.0;
+    SetScore();
     dialog->show();
 }
 

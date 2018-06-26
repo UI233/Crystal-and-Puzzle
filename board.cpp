@@ -79,6 +79,7 @@ void Score::Edit(int difficulty, int score)
     {
         in.open("Board.in",std::ios_base::out);
         in << 1 << std::endl;
+        n = 1;
         in << difficulty << " " << score << std::endl;
         in.close();
         return ;
@@ -115,14 +116,18 @@ void Score::Edit(int difficulty, int score)
         }
         diff[pos] = difficulty;
         use[pos] = score;
+        if(n < 5)
+            ++n;
     }
+
+    in.close();
     in.open("Board.in" , std::ios_base::out);
     if(in.is_open() == false)
     {
        // std::cerr << "Can't open File";
         return ;
     }
-    in << n;
+    in << n << std::endl;
     for(int i=0;i<n;i++)
     {
         in << diff[i] << " " << use[i] <<std::endl;
