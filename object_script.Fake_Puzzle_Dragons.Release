@@ -1,0 +1,15 @@
+INPUT(
+./release/main.o
+./release/mainwindow.o
+./release/board.o
+./release/gamepad.o
+./release/difficultychoice.o
+./release/display.o
+./release/qrc_img.o
+./release/qrc_audio.o
+./release/moc_mainwindow.o
+./release/moc_board.o
+./release/moc_gamepad.o
+./release/moc_difficultychoice.o
+./release/moc_display.o
+);
