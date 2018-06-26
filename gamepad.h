@@ -41,13 +41,12 @@ public:
     void LetItFall();
 
 private:
-    static const int timeLimits[4];
+    static constexpr int timeLimits[4] = {0 , 150 , 100 , 60};
     static constexpr int Hard = 3 , Medium = 2, Easy = 1;
     std::vector<QPixmap> crystalPix;
     std::vector<QPixmap> crystalPixSelected;
     int difficulty;
     int nowTime;
-    int score;
     int crystalMap[7][5];
     int nowr=-1;
     int nowc=-1;

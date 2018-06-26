@@ -2,8 +2,6 @@
 #include "ui_gamepad.h"
 #include "ui_difficultychoice.h"
 #include<QDebug>
-
-const int gamePad::timeLimits[4] = {0, 150, 100, 60};
 bool gamePad::LoadMaterials(){
     char filename[50]="";
     QPixmap p(crystalWidth,crystalWidth);
@@ -56,7 +54,6 @@ gamePad::gamePad(QWidget *parent) :
     CreatDifficultyDialog();
     ui->setupUi(this);
     connect(ui -> back,&QPushButton::clicked,this,this -> hide);
-    connect(ui -> restart,&QPushButton::clicked,this,this -> Restart);
     //SetTimer(10); //TestTimer
     //connect(ui -> reset,&QPushButton::clicked,this,this -> restart);
     connect(display,SIGNAL(clicked(int,int)),this,SLOT(display_clicked(int,int)));
@@ -94,9 +91,8 @@ void gamePad::SetTimer(int time)
     }
 }
 
-void gamePad::SetScore(int sco)
+void gamePad::SetScore(int score)
 {
-    score = sco;
     ui -> TimerLCD -> display(score);
 }
 
@@ -107,7 +103,6 @@ void gamePad::SetEasy()
     dialog -> hide();
     delete dialog;
     dialog = nullptr;
-    SetTimer(timeLimits[Easy]);
 }
 
 void gamePad::SetMedium()
@@ -117,7 +112,6 @@ void gamePad::SetMedium()
     dialog -> hide();
     delete dialog;
     dialog = nullptr;
-    SetTimer(timeLimits[Medium]);
 }
 
 void gamePad::SetHard()
@@ -127,23 +121,11 @@ void gamePad::SetHard()
     dialog -> hide();
     delete dialog;
     dialog = nullptr;
-    SetTimer(timeLimits[Hard]);
 }
 
 int gamePad::GetDifficulty()
 {
     return difficulty;
-}
-
-void gamePad::Restart()
-{
-    SetTimer(timeLimits[difficulty]);
-    InitMap();
-    SetRandomMap();
-    DrawCrystals();
-    ShowCrystals();
-    SetScore(0);
-    return ;
 }
 
 void gamePad::CreatDifficultyDialog()

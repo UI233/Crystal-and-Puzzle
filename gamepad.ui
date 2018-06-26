@@ -19,9 +19,6 @@
   <property name="autoFillBackground">
    <bool>true</bool>
   </property>
-  <property name="styleSheet">
-   <string notr="true"/>
-  </property>
   <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
@@ -50,44 +47,30 @@
    <layout class="QVBoxLayout" name="Score">
     <item>
      <widget class="QLabel" name="ScoreLable">
-<<<<<<< HEAD
       <property name="cursor">
        <cursorShape>CrossCursor</cursorShape>
-=======
-      <property name="styleSheet">
-       <string notr="true">font: 12pt &quot;Bradley Hand ITC&quot;;
-color:rgb(255, 255, 255);
-</string>
->>>>>>> 6a4813cce97bac9cbfea5bceade09ffc46ba0b46
       </property>
       <property name="text">
-       <string>      Scores</string>
+       <string>Score</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLCDNumber" name="ScoreLCD">
-      <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);</string>
-      </property>
-     </widget>
+     <widget class="QLCDNumber" name="ScoreLCD"/>
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="restart">
+  <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>400</x>
      <y>570</y>
-     <width>71</width>
+     <width>81</width>
      <height>71</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">border-image: url(:/Resources/Resources/restart_button.bmp);</string>
-   </property>
    <property name="text">
-    <string/>
+    <string>Restart</string>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">
@@ -102,21 +85,13 @@ color:rgb(255, 255, 255);
    <layout class="QVBoxLayout" name="Timer">
     <item>
      <widget class="QLabel" name="TimerLabel">
-      <property name="styleSheet">
-       <string notr="true">color:rgb(255, 255, 255);
-font: 12pt &quot;Bradley Hand ITC&quot;;</string>
-      </property>
       <property name="text">
-       <string>      Time</string>
+       <string>Time</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLCDNumber" name="TimerLCD">
-      <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);</string>
-      </property>
-     </widget>
+     <widget class="QLCDNumber" name="TimerLCD"/>
     </item>
    </layout>
   </widget>
