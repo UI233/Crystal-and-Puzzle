@@ -43,13 +43,13 @@ private:
         switch (difficulty)
         {
             case 3:
-                return std::string("Hard   ");
+                return std::string("Hard     ");
                 break;
             case 2:
                 return std::string("Medium");
                 break;
             case 1:
-                return std::string("Easy   ");
+                return std::string("Easy     ");
                 break;
         }
         return NULL;

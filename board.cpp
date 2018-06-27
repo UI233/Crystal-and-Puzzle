@@ -48,7 +48,7 @@ Score::Score(QWidget *parent = NULL):
            return ;
     int n;
     scoreboard >> n;
-    for(int i=0;i<n;i++)
+    for(int i=0;i<n && scoreboard.good();i++)
     {
         int score,difficulty;
         scoreboard >> difficulty >> score;
