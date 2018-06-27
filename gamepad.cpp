@@ -44,7 +44,7 @@ bool gamePad::LoadMaterials()
 gamePad::gamePad(QWidget *parent) : QWidget(parent),
                                     ui(new Ui::gamePad),
                                     dialog(nullptr),
-                                    isChosenDifficulty(false),
+                                    timeout(true),
                                     timer(nullptr)
 {
     srand((unsigned)time(NULL));
@@ -89,16 +89,19 @@ void gamePad::SetTimer(int time)
                     {
                         Score::Edit(difficulty,score);
                         timer->stop();
+                        timeout = true;
                     }
                     ui->TimerLCD->display(nowTime);
                 });
         timer->start(1000);
+        timeout = false;
     }
     else
     {
         if (timer->isActive())
             timer->stop();
         timer->start(1000);
+        timeout = false;
     }
 }
 
@@ -109,7 +112,7 @@ void gamePad::SetScore()
 
 void gamePad::SetEasy()
 {
-    isChosenDifficulty = true;
+    crystalType = 3;
     difficulty = gamePad::Easy;
     dialog->hide();
     delete dialog;
@@ -119,7 +122,7 @@ void gamePad::SetEasy()
 
 void gamePad::SetMedium()
 {
-    isChosenDifficulty = true;
+    crystalType = 4;
     difficulty = gamePad::Medium;
     dialog->hide();
     delete dialog;
@@ -129,7 +132,7 @@ void gamePad::SetMedium()
 
 void gamePad::SetHard()
 {
-    isChosenDifficulty = true;
+    crystalType = 6;
     difficulty = gamePad::Hard;
     dialog->hide();
     delete dialog;
@@ -206,7 +209,7 @@ void gamePad::InitMap()
 
 void gamePad::display_clicked(int r, int c)
 {
-    if (checking)
+    if (checking || timeout)
         return;
     cntMove = 0;
     nowr = r / crystalWidth;
@@ -219,7 +222,7 @@ void gamePad::display_clicked(int r, int c)
 
 void gamePad::display_moved(int r, int c)
 {
-    if (checking)
+    if (checking || timeout)
         return;
     int r1 = r / crystalWidth;
     int c1 = c / crystalWidth;
@@ -232,7 +235,7 @@ void gamePad::display_released()
     if (cntMove)
         cntStep++;
     cntMove = 0;
-    if (checking)
+    if (checking || timeout)
         return;
     nowr = nowc = -1;
     while (CheckCrystals())
