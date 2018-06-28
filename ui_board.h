@@ -37,10 +37,10 @@ public:
         back->setStyleSheet(QStringLiteral("background-image: url(:/Resources/Resources/back_button.bmp);"));
         textBrowser = new QTextBrowser(Board);
         textBrowser->setObjectName(QStringLiteral("textBrowser"));
-        textBrowser->setGeometry(QRect(40, 170, 411, 361));
+        textBrowser->setGeometry(QRect(40, 140, 411, 391));
         textBrowser->setStyleSheet(QLatin1String("background-image: url(:/Resources/Resources/TextBroswer_bg.bmp);\n"
-"color: rgb(255, 255, 255);\n"
-"font: 18pt \"Mistral\";"));
+"color: rgb(0, 0, 0);\n"
+"font: 18pt \"Bradley Hand ITC\";"));
 
         retranslateUi(Board);
 

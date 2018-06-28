@@ -147,7 +147,8 @@ release/qrc_img.cpp: img.qrc \
 		Resources/button2.bmp \
 		Resources/6-1.png \
 		Resources/5-1.png \
-		Resources/4-1.png
+		Resources/4-1.png \
+		Resources/restart_button.bmp
 	'D:\Programs\Coding_Tools\Qt\5.9.3\5.9.3\mingw53_32\bin\rcc.exe' -name img img.qrc -o release/qrc_img.cpp
 
 release/qrc_audio.cpp: audio.qrc \
@@ -1333,6 +1334,8 @@ release/gamepad.o: gamepad.cpp gamepad.h \
 		display.h \
 		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/QLabel \
 		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qlabel.h \
+		board.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtCore/QString \
 		ui_gamepad.h \
 		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtCore/QVariant \
 		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/QAction \
@@ -1481,7 +1484,48 @@ release/difficultychoice.o: difficultychoice.cpp difficultychoice.h \
 		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtCore/qfiledevice.h \
 		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtGui/qvector2d.h \
 		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtGui/qtouchdevice.h \
-		ui_difficultychoice.h
+		ui_difficultychoice.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtCore/QVariant \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/QAction \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qaction.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtGui/qicon.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qactiongroup.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/QApplication \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qapplication.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtCore/qcoreapplication.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtCore/qeventloop.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qdesktopwidget.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtGui/qguiapplication.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtGui/qinputmethod.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/QButtonGroup \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/QHeaderView \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qheaderview.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qframe.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qstyleoption.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtGui/qvalidator.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtCore/qregularexpression.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qslider.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractslider.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qstyle.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtabbar.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qrubberband.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/QPushButton \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qpushbutton.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/QVBoxLayout \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qboxlayout.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qlayout.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/qgridlayout.h \
+		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/difficultychoice.o difficultychoice.cpp
 
 release/display.o: display.cpp display.h \

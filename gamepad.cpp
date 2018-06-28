@@ -8,36 +8,33 @@ const int gamePad::timeLimits[4] = {0, 150, 100, 60};
 bool gamePad::LoadMaterials()
 {
     char filename[50] = "";
-    QPixmap p(crystalWidth, crystalWidth);
-    p.fill(Qt::transparent);
-    crystalPix.push_back(p);
+    QPixmap p(crystalWidth, crystalWidth);//创建临时变量
+    p.fill(Qt::transparent);//第0张素材应为透明，表示该位置无宝石
+    crystalPix.push_back(p);//crystalPix为vector容器，将第一个透明QPixmap插入
     for (int i = 1; i <= 6; i++)
     {
-        sprintf(filename, ":/Resources/Resources/%d.png", i);
-        //qDebug(filename);
+        sprintf(filename, ":/Resources/Resources/%d.png", i);//文件名字符串处理
         QPixmap pic(filename);
         if (pic.isNull())
         {
-            //qDebug("notokay");
+            qDebug("Can't load file %s",filename);
             return false;
         }
-        crystalPix.push_back(pic.copy(0, 0, 100, 100).scaled(crystalWidth, crystalWidth));
+        crystalPix.push_back(pic.copy(0, 0, 100, 100).scaled(crystalWidth, crystalWidth));//将图片拷贝（深拷贝）并缩放到相应尺寸
     }
-    displayBg = new QPixmap(":/Resources/Resources/display_background");
-    crystalPixSelected.push_back(p);
+    displayBg = new QPixmap(":/Resources/Resources/display_background");//棋盘背景图片的初始化
+    crystalPixSelected.push_back(p);//crystalPixSelected中的是有选中特效的宝石图标
     for (int i = 1; i <= 6; i++)
     {
         sprintf(filename, ":/Resources/Resources/%d-1.png", i);
-        //qDebug(filename);
         QPixmap pic(filename);
         if (pic.isNull())
         {
-            //qDebug("notokay");
+            qDebug("Can't load file %s",filename);
             return false;
         }
         crystalPixSelected.push_back(pic.copy(0, 0, 100, 100).scaled(crystalWidth, crystalWidth));
     }
-    //qDebug("okay");
     return true;
 }
 
@@ -55,9 +52,6 @@ gamePad::gamePad(QWidget *parent) : QWidget(parent),
     display->setGeometry(140, 120, 300, 420);
     display->setParent(this);
     this->InitMap();
-    this->SetRandomMap();
-    this->DrawCrystals();
-    this->ShowCrystals();
     ui->setupUi(this);
     CreatDifficultyDialog();
     connect(ui->back, &QPushButton::clicked, this, this->hide);
@@ -112,32 +106,44 @@ void gamePad::SetScore()
 
 void gamePad::SetEasy()
 {
-    crystalType = 3;
+    crystalType = 5;
+    eliminateLimit=3;
     difficulty = gamePad::Easy;
     dialog->hide();
     delete dialog;
     dialog = nullptr;
     SetTimer(timeLimits[Easy]);
+    this->SetRandomMap();
+    this->DrawCrystals();
+    this->ShowCrystals();
 }
 
 void gamePad::SetMedium()
 {
-    crystalType = 4;
+    crystalType = 6;
+    eliminateLimit=3;
     difficulty = gamePad::Medium;
     dialog->hide();
     delete dialog;
     dialog = nullptr;
     SetTimer(timeLimits[Medium]);
+    this->SetRandomMap();
+    this->DrawCrystals();
+    this->ShowCrystals();
 }
 
 void gamePad::SetHard()
 {
     crystalType = 6;
+    eliminateLimit=4;
     difficulty = gamePad::Hard;
     dialog->hide();
     delete dialog;
     dialog = nullptr;
     SetTimer(timeLimits[Hard]);
+    this->SetRandomMap();
+    this->DrawCrystals();
+    this->ShowCrystals();
 }
 
 int gamePad::GetDifficulty()
@@ -192,9 +198,9 @@ void gamePad::SetRandomMap()
         for (int r = 0; r < Height; r++)
             if (crystalMap[r][c] == 0)
             {
-                int val = (rand() % 6) + 1;
+                int val = (rand() % crystalType) + 1;
                 while (!chk(r, c, val))
-                    val = (rand() % 6) + 1;
+                    val = (rand() % crystalType) + 1;
                 crystalMap[r][c] = val;
                 qDebug("Position:%d %d Color:%d", r, c, val);
             }
@@ -302,7 +308,7 @@ bool gamePad::CheckCrystals()
                 dfs(r, c);
             }
     for (int i = 1; i <= cnt; i++)
-        if (num[i] > 2)
+        if (num[i] >= eliminateLimit)
         {
             score += pow(2.5, num[i]) * comboBonus;
             SetScore();

@@ -61,7 +61,8 @@ class gamePad : public QWidget
     const int Width = 5;
     const int Height = 7;
     const int crystalWidth = 60;
-    int crystalType;
+    int crystalType=6;
+    int eliminateLimit=3;
     const int maxCntMove = 20; //每次移动步数限制
     bool timeout;
     Ui::gamePad *ui;

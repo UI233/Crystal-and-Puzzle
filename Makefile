@@ -194,6 +194,7 @@ Makefile: Fake_Puzzle_Dragons.pro ../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/
 		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/mkspecs/features/qt_config.prf \
 		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/mkspecs/win32-g++/qmake.conf \
 		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/mkspecs/features/exclusive_builds.prf \
 		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/mkspecs/features/toolchain.prf \
 		../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/mkspecs/features/default_pre.prf \
@@ -358,6 +359,7 @@ Makefile: Fake_Puzzle_Dragons.pro ../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/
 ../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/mkspecs/features/qt_config.prf:
 ../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/mkspecs/win32-g++/qmake.conf:
 ../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/mkspecs/features/exclusive_builds.prf:
 ../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/mkspecs/features/toolchain.prf:
 ../../../Programs/Coding_Tools/Qt/5.9.3/5.9.3/mingw53_32/mkspecs/features/default_pre.prf:

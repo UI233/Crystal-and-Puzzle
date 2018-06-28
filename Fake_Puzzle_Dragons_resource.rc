@@ -1,6 +1,6 @@
 #include <windows.h>
 
-IDI_ICON1	ICON	DISCARDABLE	"D:/Codes/Github/Crystal-and-Puzzle/crystal.ico"
+IDI_ICON1	ICON	DISCARDABLE	"D:/Codes/Github/Crystal-and-Puzzle/crystals.ico"
 
 VS_VERSION_INFO VERSIONINFO
 	FILEVERSION 0,0,0,0
