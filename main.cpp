@@ -11,10 +11,5 @@ int main(int argc, char *argv[])
     w.show();
     w.setWindowTitle("Crystal & Puzzle");
 
-    QMediaPlayer *musicPlayer = new QMediaPlayer(&a);
-    musicPlayer -> setMedia(QUrl("qrc:/Resources/bgm.mp3"));
-    musicPlayer -> setVolume(80);
-    musicPlayer -> play();
-
     return a.exec();
 }

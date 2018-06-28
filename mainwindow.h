@@ -8,6 +8,7 @@
 #include <string>
 #include "board.h"
 #include "gamepad.h"
+#include <QMediaPlayer>
 
  namespace Ui {
 class MainWindow;
@@ -34,6 +35,7 @@ private:
     std::string filename;
     Board *score,*help;
     gamePad *game;
+    QMediaPlayer *musicPlayer;
 };
 
 #endif // MAINWINDOW_H

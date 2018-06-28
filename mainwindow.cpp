@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMediaPlayer>
 
 using std::fstream;
 
@@ -8,16 +9,21 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     score(NULL),
     help(NULL),
-    game(NULL)
+    game(NULL),
+    musicPlayer(new QMediaPlayer(this))
 {
     ui->setupUi(this);
     connect(ui -> helpme,&QPushButton::clicked,this,ShowHelp);
     connect(ui -> highscore,&QPushButton::clicked,this,ShowBoard);
     connect(ui -> StGame,&QPushButton::clicked,this,StartGame);
+    musicPlayer -> setMedia(QUrl("qrc:/Resources/bgm.mp3"));
+    musicPlayer -> setVolume(80);
+    musicPlayer -> play();
 }
 
 MainWindow::~MainWindow()
 {
+    delete musicPlayer;
     delete ui;
 }
 
